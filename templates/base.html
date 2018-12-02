@@ -12,28 +12,34 @@
   </title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'base.css' %}">
+  <link rel="stylesheet" href="{% static 'simple-sidebar.css' %}">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
   <!-- NAVIGATION BAR-->
-  <nav class="navbar sticky-top navbar-expand-lg navbar-light mb-2">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarExample10" aria-controls="navbarExample10" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light mb-2 rounded col-md-10 offset-md-1">
 
-    <div class="collapse navbar-collapse justify-content-md-center" id="navbarExample10">
+    {% block filters_btn %}{% endblock filters_btn %}   
+
+    <a class="navbar-brand active" href="{% url 'home_page_url' %}">
+      <img src="{% static 'camera.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+      ImageFilter
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapseNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+
+    <div class="collapse navbar-collapse justify-content-end rounded" id="collapseNav">      
       <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="navbar-brand" href="{% url 'home_page_url' %}">
-            <img src="{% static 'camera.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
-            ImageFilter
-          </a>
-        </li>
         <li class="nav-item {% block acthome %}{% endblock acthome %}">
-          <a class="nav-link" href="{% url 'home_page_url' %}">Home</a>
+          <a class="nav-link" href="{% url 'home_page_url' %}" style="font-size: 20px;">Home</a>
         </li>
         <li class="nav-item {% block actfiltering %}{% endblock actfiltering %}">
-          <a class="nav-link" href="{% url 'filtering_url' %}">Filtering</a>
+          <a class="nav-link" href="{% url 'filtering_url' %}" style="font-size: 20px;">Filtering</a>
         </li>
       </ul>
     </div>
