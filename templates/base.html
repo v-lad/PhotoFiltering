@@ -20,7 +20,7 @@
 <body>
 
   <!-- NAVIGATION BAR-->
-  <nav class="navbar sticky-top navbar-expand-lg navbar-light mb-2 rounded col-md-10 offset-md-1">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light mb-1 col-md-10 offset-md-1">
 
     {% block filters_btn %}{% endblock filters_btn %}   
 
@@ -33,7 +33,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>    
 
-    <div class="collapse navbar-collapse justify-content-end rounded" id="collapseNav">      
+    <div class="collapse navbar-collapse justify-content-end" id="collapseNav">      
       <ul class="navbar-nav">
         <li class="nav-item {% block acthome %}{% endblock acthome %}">
           <a class="nav-link" href="{% url 'home_page_url' %}" style="font-size: 20px;">Home</a>

@@ -1,0 +1,1 @@
+web: gunicorn PhotoFilter.wsgi --log-file -
