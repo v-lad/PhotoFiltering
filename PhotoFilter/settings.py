@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'PhotoFilter.urls'
@@ -78,8 +79,15 @@ WSGI_APPLICATION = 'PhotoFilter.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'djongo',
+        'NAME': 'heroku_7dpjd8xt',
+        'HOST': 'ds123624.mlab.com',
+        'PORT': 23624,
+        'USER': 'adm',
+        'PASSWORD': 'adm113322',
+        'AUTH_SOURCE': 'heroku_7dpjd8xt',
+        'ENFORCE_SCHEMA': True,
+        'AUTH_MECHANISM': 'SCRAM-SHA-1',
     }
 }
 
