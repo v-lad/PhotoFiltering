@@ -1,3 +1,7 @@
 .navbar {
-    background-color: rgb(46, 165, 244) !important;
+    background-color: rgba(46, 165, 244, 1) !important;
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 0;
+    z-index: 1001;
 }
