@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>
+    {% block title %}
+      Title
+    {% endblock title %}  
+  </title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <style>
+    .bg-dark {
+      background-color: rgb(46,165,244);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION BAR-->
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light mb-2" style="background-color: rgb(46,165,244);">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarExample10" aria-controls="navbarExample10" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-md-center" id="navbarExample10">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="navbar-brand" href="#">
+            <img src="{% static 'camera.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+            ImageFilter
+          </a>
+        </li>
+        <li class="nav-item {% block acthome %}{% endblock acthome %}">
+          <a class="nav-link" href="{% url 'home_page_url' %}">Home</a>
+        </li>
+        <li class="nav-item {% block actfiltering %}{% endblock actfiltering %}">
+          <a class="nav-link" href="{% url 'filtering_url' %}">Filtering</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- LEFT SIDE BAR -->  
+  {% block left_bar %}
+    Some content
+  {% endblock left_bar %}
+    
+    
+</body>
+</html>
