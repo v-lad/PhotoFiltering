@@ -12,23 +12,18 @@
   <div class="row">
     <div class="col-3">
       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Grayscale</a>
-        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Sepia</a>
-        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Negative</a>
-        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Noises</a>
-        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Brightness</a>
-        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Black'n'White</a>
+        <a class="nav-link {% block a_gray %}{% endblock a_gray %}" href="{% url 'Grayscale_filter_url' %}">Grayscale</a>
+        <a class="nav-link {% block a_sepia %}{% endblock a_sepia %}" href="{% url 'Sepia_filter_url' %}">Sepia</a>
+        <a class="nav-link {% block a_neg %}{% endblock a_neg %}" href="{% url 'Negative_filter_url' %}">Negative</a>
+        <a class="nav-link {% block a_noise %}{% endblock a_noise %}" href="{% url 'Noises_filter_url' %}">Noises</a>
+        <a class="nav-link {% block a_bright %}{% endblock a_bright %}" href="{% url 'Brightnes_filter_url' %}">Brightness</a>
+        <a class="nav-link {% block a_bnw %}{% endblock a_bnw %}" href="{% url 'BnW_filter_url' %}">Black'n'White</a>
       </div>
     </div>
     <div class="col-9">
-      <div class="tab-content" id="v-pills-tabContent">
-        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">...</div>
-        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
-        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
-        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
-        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
-        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
-      </div>
+      {% block handling_content %}
+        some content
+      {% endblock handling_content %}
     </div>
   </div>
 {% endblock left_bar %}
