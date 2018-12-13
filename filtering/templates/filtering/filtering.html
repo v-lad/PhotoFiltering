@@ -1,8 +1,11 @@
 {% extends "filtering/base_fil.html" %}
+{% load static %}
 
 {% block title %}
   Filtering
 {% endblock title %}
+
+{% block simple-sidebar-css %}<link rel="stylesheet" href="{% static 'simple-sidebar.css' %}">{% endblock simple-sidebar-css %}
 
 {% block actfiltering %}
   active
@@ -12,6 +15,7 @@
   <a href="#menu-toggle" class="btn btn-outline-dark mr-2" id="menu-toggle">Filters</a>
 {% endblock filters_btn %}
 
+{% block home %}{% endblock home %}
 
 {% block left_bar %}
   <div id="wrapper">
@@ -46,30 +50,16 @@
     <!-- Page Content -->
     <div id="page-content-wrapper">
       <div class="container-fluid">
-        <h1>Simple Sidebar</h1>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dignissimos commodi consectetur consequuntur architecto libero facilis veniam minima enim nesciunt laboriosam maiores animi nisi autem, expedita sed accusantium, quibusdam explicabo totam.
-        Asperiores exercitationem assumenda consequatur dignissimos molestiae earum ipsa architecto sed? Fugit temporibus perferendis rerum nemo hic velit ipsum? Quos reprehenderit veniam asperiores laudantium dolorum consectetur dolor aliquid, cupiditate corporis temporibus.
-        Deleniti, debitis velit itaque veniam explicabo dolores, optio ipsa possimus tempora illo ut dignissimos in. Ipsam, placeat, illum explicabo excepturi quis consequuntur earum eum recusandae dolor, inventore error nam corrupti.
-        Illum labore animi, nobis ex saepe nesciunt inventore! Quas voluptas repellendus dolores debitis modi soluta, dicta consectetur consequuntur eaque praesentium libero vitae et aspernatur impedit deserunt aperiam distinctio commodi! Maxime?
-        Voluptatem placeat atque, natus magnam quaerat vero aliquid nesciunt, molestiae veritatis qui cupiditate odit cumque labore a neque! Quam, nesciunt eum odio rem laboriosam sit magni iure deserunt excepturi unde!
-        Obcaecati similique praesentium modi ut provident sunt! Quia est assumenda molestias asperiores officiis vel pariatur ab corporis dignissimos alias quibusdam nulla, qui sunt inventore iusto, quod ipsum id tempora odio?
-        Quod rem laboriosam architecto eveniet! Laudantium porro officiis doloremque nihil suscipit alias blanditiis eveniet, ullam quasi asperiores hic illum doloribus aliquid totam aperiam, fugiat dolorum unde esse. Minima, doloribus veritatis.
-        Neque temporibus, sunt vitae explicabo maxime nam molestias magni unde dignissimos recusandae voluptatibus non ipsa porro culpa repellendus vel nobis error maiores, earum voluptate alias odit. Possimus, cumque minima. Porro.
-        Quod nostrum, dignissimos dolorum, mollitia labore non corporis modi unde dolor ratione harum. Soluta corporis suscipit, voluptates voluptatem odit voluptatibus consectetur? Adipisci error reprehenderit maiores quia quidem minima consequuntur vero.
-        Aperiam laudantium delectus unde alias. In tempora repellat eaque, alias eligendi nemo inventore sunt blanditiis aliquam? Aliquid distinctio minima blanditiis totam ipsum natus consectetur rerum deleniti quam, illo beatae quaerat!
-        Quibusdam at laudantium maxime consectetur nulla. Dignissimos dolores culpa iusto qui dolor laudantium magni odio unde, fugiat facere labore, hic, eos cum ea recusandae aliquam quod! Et tempora nemo incidunt.
-        Adipisci delectus quaerat assumenda velit quisquam illo ut provident nostrum necessitatibus, vitae animi doloremque magni repudiandae hic dolores iste officiis id inventore, omnis aspernatur impedit optio quo nam? Culpa, minus?
-        Totam sint deserunt doloremque magni? Itaque accusamus, repellat labore atque cupiditate dolorem dicta mollitia animi aspernatur placeat temporibus architecto delectus quia magnam recusandae sunt minus eveniet? Labore at architecto ipsa.
-        Rerum alias impedit earum nulla sed eius mollitia libero harum ea? Molestiae eveniet ad voluptas magni. Iusto voluptate fugit deserunt culpa suscipit error, animi provident ipsam vero blanditiis delectus est?
-        Temporibus molestias quae ipsum nihil, velit ab in doloribus odit voluptatibus eum architecto optio deserunt nobis mollitia necessitatibus commodi rem corporis sapiente magnam perspiciatis veritatis ipsa saepe maxime non? Harum!
-        Quibusdam, vel praesentium non quisquam molestiae nisi, excepturi reiciendis distinctio sequi nam, hic debitis quas voluptatem doloribus quidem doloremque deserunt esse quae eum nemo ea consectetur. Voluptatum eos fugit accusantium.
-        Expedita repellat error officiis doloribus at omnis veritatis repudiandae reprehenderit nisi placeat voluptates modi quos, earum esse velit nihil sint incidunt unde saepe veniam. Nihil atque ex numquam maxime recusandae?
-        Sit porro temporibus impedit totam perferendis consectetur quas veniam doloremque dolorum illum! Corrupti, ipsum? Illo ipsam natus enim possimus alias hic laborum minima error harum aspernatur optio, libero impedit perspiciatis?
-        Rerum blanditiis fugit fugiat eum magnam ullam itaque repellendus necessitatibus impedit distinctio nihil laborum labore quaerat molestiae mollitia, obcaecati nostrum? Perferendis unde nemo officia id architecto iure quod laboriosam quibusdam.
-        Eaque magnam rerum a, vero impedit soluta repellat nemo perferendis aliquid cumque, voluptate sit, culpa iste blanditiis excepturi! Dignissimos, dolorum corrupti? Unde, adipisci voluptatibus labore quis possimus error laudantium voluptas.</p>
+        <h1>{% block filter-header %}Filtering Main{% endblock %}</h1>
+
+        {% block filter-main %}
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae vel corporis, odio, cumque minima facilis sapiente fuga quia amet placeat eveniet totam molestias quidem velit repudiandae expedita aliquam eos est?
+        Optio maxime aperiam eaque magni aspernatur, blanditiis labore eius aliquam, dicta numquam ipsam commodi aliquid pariatur quos, natus dolore? Iste temporibus dolor dolore id ad nesciunt nostrum eligendi consequuntur quis?
+        Consequatur quasi expedita placeat a, magni quas nulla minima accusamus repellendus facere cumque natus doloribus tempore corrupti maiores corporis fugiat dolores voluptates asperiores eos ut est aspernatur dolore quis! Eum!
+        Voluptatum enim culpa corrupti sapiente repellendus possimus, necessitatibus, doloribus beatae rem illo nesciunt atque error quis fugit modi animi, consequuntur laborum distinctio blanditiis iusto! Tempore quas eum eius possimus aperiam.</p>
+        {% endblock filter-main%}
       </div>
     </div>
-    <!-- /#page-content-wrapper -->
   </div>
 
   <!-- Menu Toggle Script -->
