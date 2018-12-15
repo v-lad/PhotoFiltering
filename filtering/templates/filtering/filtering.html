@@ -13,7 +13,7 @@
 {% endblock actfiltering %}
 
 {% block filters_btn %}
-  <a href="#menu-toggle" class="btn btn-outline-dark mr-2" id="menu-toggle">Filters</a>
+  <a href="#menu-toggle" class="btn btn-outline-dark mr-2 menu-toggle">Filters</a>
 {% endblock filters_btn %}
 
 {% block home %}{% endblock home %}
@@ -28,22 +28,25 @@
           Choose filter
         </li>
         <li>
-          <a class="{% block a_gray %}{% endblock a_gray %}" href="{% url 'Grayscale_filter_url' %}">Grayscale</a>
+          {% comment %} <a class="{% block a_gray %}{% endblock a_gray %}">            
+            
+          </a> {% endcomment %}
+          <button class="chng-bgc btn btn-primary btn-block" type="submit" form="image-form" formaction="{% url 'Grayscale_filter_url' %}" formmethod="post">Grayscale</button>
         </li>
         <li>
-          <a class="{% block a_sepia %}{% endblock a_sepia %}" href="{% url 'Sepia_filter_url' %}">Sepia</a>
+          <button class="chng-bgc btn btn-primary btn-block" type="submit" form="image-form" formaction="{% url 'Sepia_filter_url' %}" formmethod="post">Sepia</button>
         </li>
         <li>
-          <a class="{% block a_neg %}{% endblock a_neg %}" href="{% url 'Negative_filter_url' %}">Negative</a>
+          <button class="chng-bgc btn btn-primary btn-block" type="submit" form="image-form" formaction="{% url 'Negative_filter_url' %}" formmethod="post">Negative</button>
         </li>
         <li>
-          <a class="{% block a_noise %}{% endblock a_noise %}" href="{% url 'Noises_filter_url' %}">Noises</a>
+          <button class="chng-bgc btn btn-primary btn-block" type="submit" form="image-form" formaction="{% url 'Noises_filter_url' %}" formmethod="post">Noises</button>
         </li>
         <li>
-          <a class="{% block a_bright %}{% endblock a_bright %}" href="{% url 'Brightnes_filter_url' %}">Brightnes</a>
+          <button class="chng-bgc btn btn-primary btn-block" type="submit" form="image-form" formaction="{% url 'Brightnes_filter_url' %}" formmethod="post">Brightnes</button>
         </li>
         <li>
-          <a class="{% block a_bnw %}{% endblock a_bnw %}" href="{% url 'BnW_filter_url' %}">Black'n'White</a>
+          <button class="chng-bgc btn btn-primary btn-block" type="submit" form="image-form" formaction="{% url 'BnW_filter_url' %}" formmethod="post">Black'n'White</button>
         </li>
       </ul>
     </div>
@@ -54,29 +57,53 @@
         <h1>{% block filter-header %}Filtering Main{% endblock %}</h1>
 
         {% block filter-main %}
-        <div class="row justify-content-center mt-3 mb-5">
-          <div class="fileform col-md-5 row justify-content-between"> 
-            <div id="fileformlabel" class="col-9">Choose file</div>
-            <div class="selectbutton col-3">Browse</div>
-            <input id="upload" type="file" name="upload" onchange="getName(this.value);"/>
-          </div>
-        </div>  
+        <form id="image-form">
+          {% csrf_token %}
+          <div class="row justify-content-center mt-3 mb-5">
+            <div class="fileform col-md-5 row justify-content-between"> 
+              <div id="fileformlabel" class="col-9">Choose file</div>
+              <div class="selectbutton col-3">Browse</div>
+              <input id="upload" type="file" name="upload" onchange="getName(this.value);"/>
+            </div>
+          </div>  
+        </form>
 
         <div class="row justify-content-center">
           <div id="place-img">
             <span id="output">
               <span id="image" max-width="700px"></span>
-            </span>
+            </span>            
           </div>
+        </div>
+        <div id="filt-but" class="text-center">
+          <a href="#menu-toggle" id="to-show-btn" class="menu-toggle btn btn-primary col-md-4 mt-3">Filters List</a>
         </div>
         {% endblock filter-main%}
       </div>
     </div>
   </div>
 
-  <!-- Menu Toggle Script -->
+  <style>
+    .chng-bgc:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      /*border-color: #378AFF;*/
+    }
+
+    .chng-bgc {
+      background-color: #378AFF;
+      border:none;
+    }
+
+    li:not(:first-child) {
+      border-bottom: 1px solid #2A6AC3;
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+  </style>
   <script>
-  $("#menu-toggle").click(function(e) {
+  $(".menu-toggle").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
   });
@@ -96,6 +123,7 @@
   function handleFileSelect(evt) {
     var file = evt.target.files; // FileList object
     var f = file[0];
+    console.log(f);
     // Only process image files.
     if (!f.type.match('image.*')) {
         alert("Image only please....");
@@ -107,7 +135,9 @@
         // Render thumbnail.
         var span = document.getElementById('image');
         span.innerHTML = ['<img class="thumb" id="new-img" title="', escape(theFile.name), '" src="', e.target.result, '" />'].join('');        
-        document.getElementById('output').insertBefore(span, null);
+        document.getElementById('output').insertBefore(span, null);    
+        var filt_btn = document.getElementById("to-show-btn");
+        filt_btn.style.visibility = "visible"    
       };
     })(f);
     // Read in the image file as a data URL.
