@@ -16,9 +16,15 @@
     <hr class="star-light">
     {% comment %} <img src="{% static 'shutter.svg' %}" width="100px" alt="shutter"> {% endcomment %}
     {% comment %} <h2 class="font-weight-light mb-0">Web Developer - Graphic Artist - User Experience Designer</h2> {% endcomment %}
-    <a class="btn btn-primary btn-lg col-sm-9 col-md-6" href="{% url 'filtering_url' %}">Try in now!</a>
+    <a class="btn btn-primary btn-lg col-md-6" href="{% url 'filtering_url' %}">Try in now!</a>
   </div>
 </header>
+
+<div class="copyright py-4 text-center text-white">
+  <div class="container">
+    <small>Copyright &copy; PhotoFiltering 2018</small>
+  </div>
+</div>
 {% endblock home %}
 
 {% block left_bar %}{% endblock left_bar %}

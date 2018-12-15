@@ -6,6 +6,7 @@
 {% endblock title %}
 
 {% block simple-sidebar-css %}<link rel="stylesheet" href="{% static 'simple-sidebar.css' %}">{% endblock simple-sidebar-css %}
+{% block file-choose %}<link rel="stylesheet" href="{% static 'upload.css' %}">{% endblock %}
 
 {% block actfiltering %}
   active
@@ -27,36 +28,47 @@
           Choose filter
         </li>
         <li>
-            <a class="{% block a_gray %}{% endblock a_gray %}" href="{% url 'Grayscale_filter_url' %}">Grayscale</a>
+          <a class="{% block a_gray %}{% endblock a_gray %}" href="{% url 'Grayscale_filter_url' %}">Grayscale</a>
         </li>
         <li>
-            <a class="{% block a_sepia %}{% endblock a_sepia %}" href="{% url 'Sepia_filter_url' %}">Sepia</a>
+          <a class="{% block a_sepia %}{% endblock a_sepia %}" href="{% url 'Sepia_filter_url' %}">Sepia</a>
         </li>
         <li>
-            <a class="{% block a_neg %}{% endblock a_neg %}" href="{% url 'Negative_filter_url' %}">Negative</a>
+          <a class="{% block a_neg %}{% endblock a_neg %}" href="{% url 'Negative_filter_url' %}">Negative</a>
         </li>
         <li>
-            <a class="{% block a_noise %}{% endblock a_noise %}" href="{% url 'Noises_filter_url' %}">Noises</a>
+          <a class="{% block a_noise %}{% endblock a_noise %}" href="{% url 'Noises_filter_url' %}">Noises</a>
         </li>
         <li>
-            <a class="{% block a_bright %}{% endblock a_bright %}" href="{% url 'Brightnes_filter_url' %}">Brightnes</a>
+          <a class="{% block a_bright %}{% endblock a_bright %}" href="{% url 'Brightnes_filter_url' %}">Brightnes</a>
         </li>
         <li>
-            <a class="{% block a_bnw %}{% endblock a_bnw %}" href="{% url 'BnW_filter_url' %}">Black'n'White</a>
+          <a class="{% block a_bnw %}{% endblock a_bnw %}" href="{% url 'BnW_filter_url' %}">Black'n'White</a>
         </li>
       </ul>
     </div>
-    <!-- /#sidebar-wrapper -->
+
     <!-- Page Content -->
     <div id="page-content-wrapper">
       <div class="container-fluid">
         <h1>{% block filter-header %}Filtering Main{% endblock %}</h1>
 
         {% block filter-main %}
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae vel corporis, odio, cumque minima facilis sapiente fuga quia amet placeat eveniet totam molestias quidem velit repudiandae expedita aliquam eos est?
-        Optio maxime aperiam eaque magni aspernatur, blanditiis labore eius aliquam, dicta numquam ipsam commodi aliquid pariatur quos, natus dolore? Iste temporibus dolor dolore id ad nesciunt nostrum eligendi consequuntur quis?
-        Consequatur quasi expedita placeat a, magni quas nulla minima accusamus repellendus facere cumque natus doloribus tempore corrupti maiores corporis fugiat dolores voluptates asperiores eos ut est aspernatur dolore quis! Eum!
-        Voluptatum enim culpa corrupti sapiente repellendus possimus, necessitatibus, doloribus beatae rem illo nesciunt atque error quis fugit modi animi, consequuntur laborum distinctio blanditiis iusto! Tempore quas eum eius possimus aperiam.</p>
+        <div class="row justify-content-center mt-3 mb-5">
+          <div class="fileform col-md-5 row justify-content-between"> 
+            <div id="fileformlabel" class="col-9">Choose file</div>
+            <div class="selectbutton col-3">Browse</div>
+            <input id="upload" type="file" name="upload" onchange="getName(this.value);"/>
+          </div>
+        </div>  
+
+        <div class="row justify-content-center">
+          <div id="place-img">
+            <span id="output">
+              <span id="image" max-width="700px"></span>
+            </span>
+          </div>
+        </div>
         {% endblock filter-main%}
       </div>
     </div>
@@ -68,5 +80,39 @@
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
   });
+
+  function getName(str) {
+    if (str.lastIndexOf('\\')) {
+      var i = str.lastIndexOf('\\') + 1;
+    } else {
+      var i = str.lastIndexOf('/') + 1;
+    }
+    var filename = str.slice(i);
+    var uploaded = document.getElementById("fileformlabel");
+    uploaded.style.color = "#000";
+    uploaded.innerHTML = filename;    
+  }
+
+  function handleFileSelect(evt) {
+    var file = evt.target.files; // FileList object
+    var f = file[0];
+    // Only process image files.
+    if (!f.type.match('image.*')) {
+        alert("Image only please....");
+    }
+    var reader = new FileReader();
+    // Closure to capture the file information.
+    reader.onload = (function(theFile) {
+      return function(e) {
+        // Render thumbnail.
+        var span = document.getElementById('image');
+        span.innerHTML = ['<img class="thumb" id="new-img" title="', escape(theFile.name), '" src="', e.target.result, '" />'].join('');        
+        document.getElementById('output').insertBefore(span, null);
+      };
+    })(f);
+    // Read in the image file as a data URL.
+    reader.readAsDataURL(f);
+  }
+  document.getElementById('upload').addEventListener('change', handleFileSelect, false);
   </script>
 {% endblock left_bar %}
