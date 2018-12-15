@@ -141,7 +141,8 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 MEDIA_URL = "/media/"
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "live-static-files", "media-root")
+# MEDIA_ROOT = os.path.join(BASE_DIR, "live-static-files", "media-root", "images")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
 db_from_env = dj_database_url.config()

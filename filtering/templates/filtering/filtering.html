@@ -31,22 +31,22 @@
           {% comment %} <a class="{% block a_gray %}{% endblock a_gray %}">            
             
           </a> {% endcomment %}
-          <button class="chng-bgc btn btn-primary btn-block" type="submit" form="image-form" formaction="{% url 'Grayscale_filter_url' %}" formmethod="post">Grayscale</button>
+          <button class="chng-bgc btn btn-primary btn-block" id="1" value="Grayscale_filter_url" type="submit" form="image-form" formaction="{% url 'filtering_url' %}" formmethod="post" formenctype="multipart/form-data">Grayscale</button>
         </li>
         <li>
-          <button class="chng-bgc btn btn-primary btn-block" type="submit" form="image-form" formaction="{% url 'Sepia_filter_url' %}" formmethod="post">Sepia</button>
+          <button class="chng-bgc btn btn-primary btn-block" id="2" value="Sepia_filter_url" type="submit" form="image-form" formaction="{% url 'filtering_url' %}" formmethod="post" formenctype="multipart/form-data">Sepia</button>
         </li>
         <li>
-          <button class="chng-bgc btn btn-primary btn-block" type="submit" form="image-form" formaction="{% url 'Negative_filter_url' %}" formmethod="post">Negative</button>
+          <button class="chng-bgc btn btn-primary btn-block" id="3" value="Negative_filter_url" type="submit" form="image-form" formaction="{% url 'filtering_url' %}" formmethod="post" formenctype="multipart/form-data">Negative</button>
         </li>
         <li>
-          <button class="chng-bgc btn btn-primary btn-block" type="submit" form="image-form" formaction="{% url 'Noises_filter_url' %}" formmethod="post">Noises</button>
+          <button class="chng-bgc btn btn-primary btn-block" id="4" value="Noises_filter_url" type="submit" form="image-form" formaction="{% url 'filtering_url' %}" formmethod="post" formenctype="multipart/form-data">Noises</button>
         </li>
         <li>
-          <button class="chng-bgc btn btn-primary btn-block" type="submit" form="image-form" formaction="{% url 'Brightnes_filter_url' %}" formmethod="post">Brightnes</button>
+          <button class="chng-bgc btn btn-primary btn-block" id="5" value="Brightnes_filter_url" type="submit" form="image-form" formaction="{% url 'filtering_url' %}" formmethod="post" formenctype="multipart/form-data">Brightnes</button>
         </li>
         <li>
-          <button class="chng-bgc btn btn-primary btn-block" type="submit" form="image-form" formaction="{% url 'BnW_filter_url' %}" formmethod="post">Black'n'White</button>
+          <button class="chng-bgc btn btn-primary btn-block" id="6" value="BnW_filter_url" type="submit" form="image-form" formaction="{% url 'filtering_url' %}" formmethod="post" formenctype="multipart/form-data">Black'n'White</button>
         </li>
       </ul>
     </div>
@@ -57,13 +57,15 @@
         <h1>{% block filter-header %}Filtering Main{% endblock %}</h1>
 
         {% block filter-main %}
-        <form id="image-form">
+        <form id="image-form" action="{% url 'filtering_url' %}" method="POST">
           {% csrf_token %}
+
           <div class="row justify-content-center mt-3 mb-5">
             <div class="fileform col-md-5 row justify-content-between"> 
               <div id="fileformlabel" class="col-9">Choose file</div>
               <div class="selectbutton col-3">Browse</div>
               <input id="upload" type="file" name="upload" onchange="getName(this.value);"/>
+              <input type="hidden" name=link  value=""/>
             </div>
           </div>  
         </form>
@@ -122,6 +124,7 @@
 
   function handleFileSelect(evt) {
     var file = evt.target.files; // FileList object
+    console.log(f);
     var f = file[0];
     console.log(f);
     // Only process image files.
@@ -144,5 +147,47 @@
     reader.readAsDataURL(f);
   }
   document.getElementById('upload').addEventListener('change', handleFileSelect, false);
+
+  function valChange1(event) {
+    l = document.getElementsByName('link')[0];
+    b = document.getElementById('1');
+    l.value = b.value;
+  }
+  document.getElementById('1').addEventListener('click', valChange1, false);
+
+  function valChange2(event) {
+    l = document.getElementsByName('link')[0];
+    b = document.getElementById('2');
+    l.value = b.value;
+  }
+  document.getElementById('2').addEventListener('click', valChange2, false);
+
+  function valChange3(event) {
+    l = document.getElementsByName('link')[0];
+    b = document.getElementById('3');
+    l.value = b.value;
+  }
+  document.getElementById('3').addEventListener('click', valChange3, false);
+
+  function valChange4(event) {
+    l = document.getElementsByName('link')[0];
+    b = document.getElementById('4');
+    l.value = b.value;
+  }
+  document.getElementById('4').addEventListener('click', valChange4, false);
+
+  function valChange5(event) {
+    l = document.getElementsByName('link')[0];
+    b = document.getElementById('5');
+    l.value = b.value;
+  }
+  document.getElementById('5').addEventListener('click', valChange5, false);
+
+  function valChange6(event) {
+    l = document.getElementsByName('link')[0];
+    b = document.getElementById('6');
+    l.value = b.value;
+  }
+  document.getElementById('6').addEventListener('click', valChange6, false);
   </script>
 {% endblock left_bar %}
