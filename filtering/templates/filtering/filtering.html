@@ -5,8 +5,8 @@
   Filtering
 {% endblock title %}
 
-{% block simple-sidebar-css %}<link rel="stylesheet" href="{% static 'simple-sidebar.css' %}">{% endblock simple-sidebar-css %}
-{% block file-choose %}<link rel="stylesheet" href="{% static 'upload.css' %}">{% endblock %}
+{% block simple-sidebar-css %}<link rel="stylesheet" href="{% static 'filtering/css/simple-sidebar.css' %}">{% endblock simple-sidebar-css %}
+{% block file-choose %}<link rel="stylesheet" href="{% static 'filtering/css/upload.css' %}">{% endblock %}
 
 {% block actfiltering %}
   active
@@ -28,25 +28,25 @@
           Choose filter
         </li>
         <li>
-          {% comment %} <a class="{% block a_gray %}{% endblock a_gray %}">            
-            
-          </a> {% endcomment %}
-          <button class="chng-bgc btn btn-primary btn-block" id="1" value="Grayscale_filter_url" type="submit" form="image-form" formaction="{% url 'filtering_url' %}" formmethod="post" formenctype="multipart/form-data">Grayscale</button>
+          <button class="chng-bgc btn btn-primary btn-block text-left" id="1" value="Grayscale_filter_url" type="submit" form="image-form" formaction="{% url 'filtering_url' %}" formmethod="post" formenctype="multipart/form-data">Grayscale</button>
         </li>
         <li>
-          <button class="chng-bgc btn btn-primary btn-block" id="2" value="Sepia_filter_url" type="submit" form="image-form" formaction="{% url 'filtering_url' %}" formmethod="post" formenctype="multipart/form-data">Sepia</button>
+          <button class="chng-bgc btn btn-primary btn-block text-left" id="2" value="Sepia_filter_url" type="submit" form="image-form" formaction="{% url 'filtering_url' %}" formmethod="post" formenctype="multipart/form-data">Sepia</button>
         </li>
         <li>
-          <button class="chng-bgc btn btn-primary btn-block" id="3" value="Negative_filter_url" type="submit" form="image-form" formaction="{% url 'filtering_url' %}" formmethod="post" formenctype="multipart/form-data">Negative</button>
+          <button class="chng-bgc btn btn-primary btn-block text-left" id="3" value="Negative_filter_url" type="submit" form="image-form" formaction="{% url 'filtering_url' %}" formmethod="post" formenctype="multipart/form-data">Negative</button>
         </li>
         <li>
-          <button class="chng-bgc btn btn-primary btn-block" id="4" value="Noises_filter_url" type="submit" form="image-form" formaction="{% url 'filtering_url' %}" formmethod="post" formenctype="multipart/form-data">Noises</button>
+          <button class="chng-bgc btn btn-primary btn-block text-left" id="4" value="Noises_filter_url" type="submit" form="image-form" formaction="{% url 'filtering_url' %}" formmethod="post" formenctype="multipart/form-data">Noises</button>
         </li>
         <li>
-          <button class="chng-bgc btn btn-primary btn-block" id="5" value="Brightnes_filter_url" type="submit" form="image-form" formaction="{% url 'filtering_url' %}" formmethod="post" formenctype="multipart/form-data">Brightnes</button>
+          <button class="chng-bgc btn btn-primary btn-block text-left" id="5" value="Brightnes_filter_url" type="submit" form="image-form" formaction="{% url 'filtering_url' %}" formmethod="post" formenctype="multipart/form-data">Brightnes</button>
         </li>
         <li>
-          <button class="chng-bgc btn btn-primary btn-block" id="6" value="BnW_filter_url" type="submit" form="image-form" formaction="{% url 'filtering_url' %}" formmethod="post" formenctype="multipart/form-data">Black'n'White</button>
+          <button class="chng-bgc btn btn-primary btn-block text-left" id="6" value="BnW_filter_url" type="submit" form="image-form" formaction="{% url 'filtering_url' %}" formmethod="post" formenctype="multipart/form-data">Black'n'White</button>
+        </li>
+        <li>
+          <button class="chng-bgc btn btn-primary btn-block text-left" id="7" value="Blur_filter_url" type="submit" form="image-form" formaction="{% url 'filtering_url' %}" formmethod="post" formenctype="multipart/form-data">Blur</button>
         </li>
       </ul>
     </div>
@@ -80,12 +80,17 @@
         <div id="filt-but" class="text-center">
           <a href="#menu-toggle" id="to-show-btn" class="menu-toggle btn btn-primary col-md-4 mt-3">Filters List</a>
         </div>
-        {% endblock filter-main%}
+        {% endblock filter-main %}
       </div>
     </div>
   </div>
 
   <style>
+
+    body {
+      background-image: url("../static/filtering/images/pipes.png")
+    }
+
     .chng-bgc:hover {
       background-color: rgba(255, 255, 255, 0.2);
       /*border-color: #378AFF;*/
@@ -104,6 +109,7 @@
       border-bottom: none;
     }
   </style>
+
   <script>
   $(".menu-toggle").click(function(e) {
     e.preventDefault();
@@ -189,5 +195,12 @@
     l.value = b.value;
   }
   document.getElementById('6').addEventListener('click', valChange6, false);
+
+  function valChange7(event) {
+    l = document.getElementsByName('link')[0];
+    b = document.getElementById('7');
+    l.value = b.value;
+  }
+  document.getElementById('7').addEventListener('click', valChange7, false);
   </script>
 {% endblock left_bar %}

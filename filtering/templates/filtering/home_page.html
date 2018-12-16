@@ -1,7 +1,7 @@
 {% extends "filtering/base_fil.html" %}
 {% load static %}
 
-{% block home-css %}<link rel="stylesheet" href="{% static 'home-page.css' %}">{% endblock home-css %}
+{% block home-css %}<link rel="stylesheet" href="{% static 'filtering/css/home-page.css' %}">{% endblock home-css %}
 
 {% block title %}Home{% endblock title %}
 {% block font-awesome %}<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">{% endblock %}
@@ -11,7 +11,7 @@
 {% block home %}
 <header class="masthead bg-primary text-white text-center">
   <div class="container">
-    <img class="img-fluid mb-5 d-block mx-auto to-rot" width="250px" src="{% static 'shutter.svg' %}" alt="">
+    <img class="img-fluid mb-5 d-block mx-auto to-rot" width="250px" src="{% static 'filtering/images/shutter.svg' %}" alt="">
     <h1 class="text-uppercase mb-0">Photo Filtering</h1>
     <hr class="star-light">
     {% comment %} <img src="{% static 'shutter.svg' %}" width="100px" alt="shutter"> {% endcomment %}
