@@ -8,3 +8,4 @@ launch.json
 settings.json
 settings.py
 last.sql
+media/images/*
