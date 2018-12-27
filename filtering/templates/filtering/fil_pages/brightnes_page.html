@@ -1,24 +1,5 @@
-{% extends "filtering/filtering.html" %}
-{% load static %}
-
-{% block image-view-css %}<link rel="stylesheet" href="{% static 'filtering/css/image-background.css' %}"/>{% endblock %}
+{% extends "filtering/fil_pages/filter_base_page.html" %}
 
 {% block a_bright %}active{% endblock a_bright %}
 
-{% block actfiltering %}{% endblock actfiltering %}
-
 {% block filter-header %}Filter of Brightness{% endblock %}
-
-{% block filters_btn %}{% endblock filters_btn %}
-
-{% block filter-main %}
-  <div class="cont row justify-content-center">
-    <div id="place-img">
-      <span id="output">
-        <span id="image">
-          <img class="thumb" id="new-img" title="img" src="{{ url_image }}" />
-        </span>
-      </span>            
-    </div>
-  </div>
-{% endblock filter-main %}

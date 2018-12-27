@@ -36,7 +36,7 @@ class FilterPageMixin:
 
         img_url = obj.image.url
         img_path = obj.image.path
-        obj.delete()
+        
         im = Image.open(img_path)
         im1, name = self.filter_f(im)
         file_u, ext = os.path.splitext(img_url)

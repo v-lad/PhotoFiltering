@@ -19,7 +19,9 @@ class FilteringView(FilteringMixin, View):
 
 
 class BnWFilterView(FilterPageMixin, View):
-    def __init__(self):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
         self.url = "filtering/fil_pages/BnW_page.html"
         self.model = ImgSave
         self.filter_f = self.filtering
@@ -49,7 +51,9 @@ class BnWFilterView(FilterPageMixin, View):
 
 
 class BrightnesFilterView(FilterPageMixin, View):
-    def __init__(self):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
         self.url = "filtering/fil_pages/brightnes_page.html"
         self.model = ImgSave
         self.filter_f = self.filtering
@@ -86,7 +90,9 @@ class BrightnesFilterView(FilterPageMixin, View):
 
 
 class GrayscaleFilterView(FilterPageMixin, View):
-    def __init__(self):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
         self.url = "filtering/fil_pages/grayscale_page.html"
         self.model = ImgSave
         self.filter_f = self.filtering
@@ -100,7 +106,9 @@ class GrayscaleFilterView(FilterPageMixin, View):
 
 
 class NegativeFilterView(FilterPageMixin, View):
-    def __init__(self):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
         self.url = "filtering/fil_pages/negative_page.html"
         self.model = ImgSave
         self.filter_f = self.filtering
@@ -124,7 +132,9 @@ class NegativeFilterView(FilterPageMixin, View):
 
 
 class NoisesFilterView(FilterPageMixin, View):
-    def __init__(self):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
         self.url = "filtering/fil_pages/noises_page.html"
         self.model = ImgSave
         self.filter_f = self.filtering
@@ -162,7 +172,9 @@ class NoisesFilterView(FilterPageMixin, View):
 
 
 class SepiaFilterView(FilterPageMixin, View):
-    def __init__(self):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
         self.url = "filtering/fil_pages/sepia_page.html"
         self.model = ImgSave
         self.filter_f = self.filtering
@@ -197,7 +209,9 @@ class SepiaFilterView(FilterPageMixin, View):
 
 
 class BlurFilterView(FilterPageMixin, View):
-    def __init__(self):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
         self.url = "filtering/fil_pages/blur_page.html"
         self.model = ImgSave
         self.filter_f = self.filtering

@@ -6,4 +6,6 @@ db.sqlite3
 .DS_Store
 launch.json
 settings.json
+settings.py
 last.sql
+media/

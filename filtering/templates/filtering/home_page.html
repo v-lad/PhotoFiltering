@@ -1,10 +1,13 @@
 {% extends "filtering/base_fil.html" %}
 {% load static %}
 
-{% block home-css %}<link rel="stylesheet" href="{% static 'filtering/css/home-page.css' %}">{% endblock home-css %}
+{% block additional-css %}
+<link rel="stylesheet" href="{% static 'filtering/css/home-page.css' %}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+{% endblock additional-css %}
 
 {% block title %}Home{% endblock title %}
-{% block font-awesome %}<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">{% endblock %}
+{% block font-awesome %}{% endblock %}
 
 {% block acthome %}active{% endblock acthome %}
 

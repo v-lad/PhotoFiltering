@@ -5,12 +5,12 @@
   Filtering
 {% endblock title %}
 
-{% block simple-sidebar-css %}<link rel="stylesheet" href="{% static 'filtering/css/simple-sidebar.css' %}">{% endblock simple-sidebar-css %}
-{% block file-choose %}<link rel="stylesheet" href="{% static 'filtering/css/upload.css' %}">{% endblock %}
+{% block additional-css %}
+<link rel="stylesheet" href="{% static 'filtering/css/simple-sidebar.css' %}">
+<link rel="stylesheet" href="{% static 'filtering/css/upload.css' %}">
+{% endblock additional-css %}
 
-{% block actfiltering %}
-  active
-{% endblock actfiltering %}
+{% block actfiltering %}active{% endblock actfiltering %}
 
 {% block filters_btn %}
   <a href="#menu-toggle" class="btn btn-outline-dark mr-2 menu-toggle">Filters</a>
