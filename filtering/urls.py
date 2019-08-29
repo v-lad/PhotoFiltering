@@ -4,8 +4,7 @@ from . import views
 urlpatterns = [
     path('', views.HomeView.as_view(), name="home_page_url"),
     path('filtering/', views.FilteringView.as_view(), name="filtering_url"),
-    path(
-        'filtering/BnW', views.BnWFilterView.as_view(), name="BnW_filter_url"),
+    path('filtering/BnW', views.BnWFilterView.as_view(), name="BnW_filter_url"),
     path(
         'filtering/Brightnes',
         views.BrightnesFilterView.as_view(),

@@ -13,7 +13,7 @@
 {% block actfiltering %}active{% endblock actfiltering %}
 
 {% block filters_btn %}
-  <a href="#menu-toggle" class="btn btn-outline-dark mr-2 menu-toggle">Filters</a>
+  <a href="#menu-toggle" class="btn btn-outline-secondary mr-2 menu-toggle">Filters</a>
 {% endblock filters_btn %}
 
 {% block home %}{% endblock home %}
@@ -57,18 +57,26 @@
         <h1>{% block filter-header %}Filtering Main{% endblock %}</h1>
 
         {% block filter-main %}
-        <form id="image-form" action="{% url 'filtering_url' %}" method="POST">
+        <form id="image-form" enctype="multipart/form-data" action="{% url 'filtering_url' %}" method="POST">
           {% csrf_token %}
 
-          <div class="row justify-content-center mt-3 mb-5">
+          <div class="row justify-content-center mt-3">
             <div class="fileform col-md-5 row justify-content-between"> 
               <div id="fileformlabel" class="col-9">Choose file</div>
               <div class="selectbutton col-3">Browse</div>
-              <input id="upload" type="file" name="upload" onchange="getName(this.value);"/>
-              <input type="hidden" name=link  value=""/>
-            </div>
-          </div>  
+              <input id="upload" type="file" name="upload" onchange="try{getName(this.value);} catch (e){console.log(e);}"/>
+              <input type="hidden" name=link value=""/>              
+            </div>            
+          </div>
         </form>
+        
+        <div class="row justify-content-center mt-3 mb-5">          
+          {% if err_msg %}
+          <div class="alert alert-dismissible alert-danger col-md-5">
+            <h4>You must choose some picture</h4>
+          </div>
+          {% endif %}  
+        </div>
 
         <div class="row justify-content-center">
           <div id="place-img">
@@ -87,8 +95,12 @@
 
   <style>
 
-    body {
+    /* body {
       background-image: url("../static/filtering/images/pipes.png")
+    } */
+
+    body {
+      background-color: #333;
     }
 
     .chng-bgc:hover {

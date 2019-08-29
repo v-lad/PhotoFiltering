@@ -15,9 +15,13 @@
     <div id="place-img">
       <span id="output">
         <span id="image">
-          <img class="thumb" id="new-img" title="img" src="{% block image-url %}{% endblock %}" />
+          <img class="thumb" id="new-img" title="img" src="data:image/png;base64, {% block image-url %}{% endblock %}" />
         </span>
       </span>            
     </div>
+  </div>
+
+  <div class="text-center">
+    <a href="/filtering" class="btn btn-primary col-md-4 mt-3">Filter another</a>
   </div>
 {% endblock filter-main %}
